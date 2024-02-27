@@ -2,7 +2,7 @@ def total_salary(path):
     salaries = []
 
     try:
-        with open("Salary.txt", "r") as fh:
+        with open(path, "r") as fh:
             for line in fh:
                 try:
                     name, salary = line.strip().split(',')
@@ -11,9 +11,6 @@ def total_salary(path):
                     print(f"Skipping invalid line: {line.strip()}")
     except FileNotFoundError:
         print("The file Salary.txt was not found.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
     if  salaries:
         total = sum(salaries)
 
