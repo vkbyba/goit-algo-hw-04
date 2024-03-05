@@ -3,14 +3,14 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
-def add_contact(args, contacts):
+def add_username_phone(args, contacts):
     if len(args) != 2:
         return "Invalid number of arguments for adding a contact."
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
-def change_contact(args, contacts):
+def change_username_phone(args, contacts):
     if len(args) != 2:
         return "Invalid number of arguments for changing a contact."
     name, new_phone = args
@@ -20,11 +20,22 @@ def change_contact(args, contacts):
     else:
         return "Contact not found."
 
-def list_contacts(contacts):
+def phone_username(args, contacts):
+    if len(args) != 1:
+        return "Invalid number of arguments for showing a contact."
+    name = args[0]
+    if name in contacts:
+        return f"{name}'s phone number is {contacts[name]}"
+    else:
+        return "Contact not found."
+
+def all(contacts):
     if contacts:
         return '\n'.join(f"{name}: {phone}" for name, phone in contacts.items())
     else:
         return "No contacts available."
+
+
 
 def main():
     contacts = {}
@@ -39,11 +50,14 @@ def main():
         elif command == "hello":
             print("How can I help you?")
         elif command == "add":
-            print(add_contact(args, contacts))
+            print(add_username_phone(args, contacts))
         elif command == "change":
-            print(change_contact(args, contacts))
+            print(change_username_phone(args, contacts))
+        elif command == "show":
+            print(phone_username(args, contacts))        
         elif command == "all":
-            print(list_contacts(contacts))
+            print(all(contacts))
+
         else:
             print("Invalid command.")
 
