@@ -13,10 +13,8 @@ def total_salary(path):
         print("The file Salary.txt was not found.")
     if  salaries:
         total = sum(salaries)
-
-        average = total / len(salaries)
-    
-        print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
+        average = total / len(salaries) if len(salaries)>0  else 0
+        return(total,average)
     else:
         print("No valid salary data was found.")
 total_salary("Salary.txt")
