@@ -5,7 +5,7 @@ def get_cats_info(path):
     with open(path, "r") as fh:
         for line in fh:
             id, name, age = line.strip().split(',')
-            cat_dict = {'id': id, 'name': name, 'age': int(age)}  
+            cat_dict = {"id": id, "name": name, "age": age}  
             cats_info.append(cat_dict)
     return cats_info
 cats_info = get_cats_info("cats_params.txt")
