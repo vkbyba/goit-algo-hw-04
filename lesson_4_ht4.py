@@ -53,8 +53,8 @@ def main():
             print(add_username_phone(args, contacts))
         elif command == "change":
             print(change_username_phone(args, contacts))
-        elif command == "show":
-            print(phone_username(args, contacts))        
+        elif command == "phone":  
+            print(phone_username(args, contacts))      
         elif command == "all":
             print(all(contacts))
 
